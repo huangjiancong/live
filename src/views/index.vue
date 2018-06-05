@@ -24,3 +24,12 @@ export default {
   }
 };
 </script>
+
+<style lang="less" scoped>
+.index {
+  > .list {
+    > .item {
+    }
+  }
+}
+</style>

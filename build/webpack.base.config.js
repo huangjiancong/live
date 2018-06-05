@@ -67,10 +67,10 @@ module.exports = {
                 require('autoprefixer')({
                   browsers: ['Firefox <= 20', 'last 10 versions', 'not ie <= 8']
                 }),
-                require('postcss-pxtorem')({
-                  rootValue: 100,
-                  selectorBlackList: ['.desktop']
-                })
+                // require('postcss-pxtorem')({
+                //   rootValue: 100,
+                //   selectorBlackList: ['.desktop']
+                // })
               ]
             }
           }, 'less-loader']
