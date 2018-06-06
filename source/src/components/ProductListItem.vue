@@ -16,16 +16,16 @@
           </div>
           <div class="details">
             <div class="title">{{ option.item.title }}</div>
-            <div class="intro">{{ option.item.intro }}</div>
+            <div class="intro">{{ option.item.intro.replace(/<[^>]+>/g,'') }}</div>
             <div @click.stop="play(option.item)" class="play">
               <i class="icon icon-play"></i>
-              <div class="control clearfix">
+              <div @click.stop="control(option.item)" class="control clearfix">
                   <div class="like">
                     <a href="javascript:;">
                       <i class="icon icon-heart"></i>
                     </a>
                   </div>
-                  <div class="pause">
+                  <div @click.stop="pause(option.item)" class="pause">
                     <a href="javascript:;">
                       <i class="icon icon-pause"></i>
                     </a>
@@ -64,6 +64,13 @@ export default {
           optionItem.isPlay = false;
         }
       });
+    },
+    control(item) {
+      return false;
+    },
+    pause(item) {
+      item.$video.pause();
+      item.isPlay = false;
     }
   },
   created() {

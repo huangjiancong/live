@@ -15,7 +15,6 @@ export default {
   computed: {
     ...mapGetters(["productDetails"])
   },
-
   asyncData({ store, route }) {
     var { params } = route;
 
