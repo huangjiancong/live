@@ -155,7 +155,7 @@ export default {
               > i {
                 position: relative;
                 top: 9px;
-                font-size: 37px;
+                font-size: 35px;
                 vertical-align: top;
               }
             }
