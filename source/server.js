@@ -94,7 +94,7 @@ function render(req, res) {
   }
 
   const context = {
-    title: '练习场景',
+    title: 'v1.0.0-beta.1',
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
