@@ -58,7 +58,24 @@ module.exports = {
                 loader: 'css-loader',
                 options: { minimize: true }
               },
-              'less-loader'
+              {
+                loader: 'postcss-loader',
+                options: {
+                  plugins: [
+                    require('autoprefixer')({
+                      browsers: ['Firefox <= 20', 'last 10 versions', 'not ie <= 8']
+                    }),
+                    require('postcss-plugin-px2rem')({
+                      rootValue: 100,
+                      selectorBlackList: ['.desktop']
+                    })
+                  ]
+                }
+              },
+              {
+                loader: 'less-loader',
+                options: { minimize: true }
+              }
             ],
             fallback: 'vue-style-loader'
           })
@@ -69,7 +86,7 @@ module.exports = {
                 require('autoprefixer')({
                   browsers: ['Firefox <= 20', 'last 10 versions', 'not ie <= 8']
                 }),
-                require('postcss-pxtorem')({
+                require('postcss-plugin-px2rem')({
                   rootValue: 100,
                   selectorBlackList: ['.desktop']
                 })
