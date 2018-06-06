@@ -38,7 +38,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/h5api/newCourse', { params: { size: 99 } }).then((res) => {
+            axios.get('/h5api/newCourse', { params: { size: 6 } }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('INDEX_SET_NEWCOURSE', data))
             })
