@@ -16,8 +16,9 @@ module.exports = {
     filename: '[name].[chunkhash].js'
   },
   resolve: {
+    extensions: ['.js', '.vue', '.json'],
     alias: {
-      'public': path.resolve(__dirname, '../public')
+      '@public': path.resolve(__dirname, '../public')
     }
   },
   module: {
@@ -44,7 +45,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           limit: 10000,
-          name: '[name].[ext]?[hash]'
+          name: '[name].[hash:7].[ext]'
         }
       },
       {
@@ -67,14 +68,22 @@ module.exports = {
                 require('autoprefixer')({
                   browsers: ['Firefox <= 20', 'last 10 versions', 'not ie <= 8']
                 }),
-                // require('postcss-pxtorem')({
-                //   rootValue: 100,
-                //   selectorBlackList: ['.desktop']
-                // })
+                require('postcss-pxtorem')({
+                  rootValue: 100,
+                  selectorBlackList: ['.desktop']
+                })
               ]
             }
           }, 'less-loader']
       },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'file-loader',
+        options: {
+          limit: 10000,
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
+      }
     ]
   },
   performance: {

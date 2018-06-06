@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=0.5, maximum-scale=0.5, user-scalable=no">
+  <title>{{ title }}</title>
+  <script>
+    /* 客户端类型检测 */
+    window.device = "";
+    if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) || (/MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/.test(navigator.userAgent))) {
+      if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        /* 手机 */
+        window.device = "mobile"
+      } else if (/iPad/i.test(navigator.userAgent)) {
+        /* pad */
+        window.device = "pad"
+      } else {
+        /* kindle */
+        window.device = "kindle"
+      }
+    } else {
+      /* 桌面 */
+      window.device = "desktop"
+    }
+
+    document.documentElement.classList.add(window.device);
+
+  </script> {{{ renderStyles() }}}
+</head>
+<body>
+  <!--vue-ssr-outlet-->{{{ renderState() }}}{{{ renderScripts() }}}
+</body>
+</html>

@@ -8,6 +8,7 @@
 
 
 <style lang="less">
+@import "./assets/less/icomoon.less";
 @import "./assets/less/quick.less";
 * {
   margin: 0;
@@ -56,4 +57,3 @@ input::-webkit-input-placeholder {
   color: #999;
 }
 </style>
-
