@@ -4,7 +4,7 @@
             <div class="swiper-wrapper">
                 <div v-for="(item,index) in option" class="swiper-slide">
                     <a href="javascript:;">
-                        <img :src="item.pictureUrl" :alt="item.title">
+                        <img :src="item" :alt="item">
                     </a>
                 </div>
             </div>
@@ -16,66 +16,40 @@
 </template>
 
 <script>
-import Swiper from 'swiper'
-import '../assets/less/swiper.less'
+import Swiper from "swiper";
+import "../assets/less/swiper.less";
 
 export default {
-    swiper: null,
-    data() {
-        return {
-            option: []
+  swiper: null,
+  props: ["option"],
+  data() {
+    return {};
+  },
+  mounted() {
+    var _this = this;
+
+    this.$nextTick(() => {
+      this.swiper = new Swiper(this.$refs.container, {
+        loop: true,
+        loopedSlides: this.option.length,
+        autoplay: {
+          delay: 3000 //1秒切换一次
+        },
+        slidesPerView: 1.1,
+        centeredSlides: true,
+        grabCursor: true,
+        pagination: {
+          el: this.$refs.pagination,
+          clickable: true
         }
-    },
-    mounted() {
-
-        var _this = this;
-
-        this.$event.on(this, 'setup', (option) => {
-
-            var tmp = [
-                'http://x04.xesimg.com/web/2018/04/20/15242105978472.jpg',
-                'http://s03.xesimg.com/web/2018/03/26/15220327577473.jpg',
-                'http://r04.xesimg.com/web/2018/04/20/15242124782690.jpg',
-                'http://s03.xesimg.com/web/2018/04/24/15245639172076.jpg',
-                'http://x02.xesimg.com/web/2018/04/19/15241257731866.jpg',
-                'http://r02.xesimg.com/web/2018/05/02/15252418488680.jpg',
-                'http://x03.xesimg.com/web/2018/04/13/15235890277649.jpg',
-                'http://r01.xesimg.com/web/2018/04/27/15248381132538.jpg'
-            ]
-
-            option.forEach((item, index) => {
-                item.pictureUrl = tmp[index];
-            });
-
-            this.option = option;
-
-            this.$nextTick(() => {
-                this.swiper = new Swiper(this.$refs.container, {
-                    loop: true,
-                    loopedSlides: option.length,
-                    autoplay: {
-                        delay: 3000,//1秒切换一次
-                    },
-                    slidesPerView: 1.1,
-                    centeredSlides: true,
-                    grabCursor: true,
-                    pagination: {
-                        el: this.$refs.pagination,
-                        clickable: true
-                    }
-                });
-                console.log(this.swiper)
-            });
-
-        });
-
-    },
-    beforeDestroy() {
-        this.swiper.autoplay.stop();
-        this.swiper = null;
-    }
-
-}
+      });
+    });
+  },
+  beforeDestroy() {
+    this.swiper.autoplay.stop();
+    this.swiper = null;
+  }
+};
 </script>
 
 <style lang="less" scoped>

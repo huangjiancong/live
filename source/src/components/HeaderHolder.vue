@@ -21,7 +21,7 @@
       </div>
       <div class="subjectList clearfix">
         <div class="list">
-          <div v-for="item in subjectOption" class="item" :class="{ current : item.current }">
+          <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
             <a href="javascript:;">{{ item.name }}</a>
           </div>
         </div>
@@ -38,25 +38,25 @@
         <div class="list">
           <div class="item">
             <a href="javascript:;">
-              <img src="../../static/images/2.svg" alt="">
+              <img src="@public/images/2.svg" alt="">
               <span>推荐课程</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="../../static/images/3.svg" alt="">
+              <img src="@public/images/3.svg" alt="">
               <span>精品课程</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="../../static/images/4.svg" alt="">
+              <img src="@public/images/4.svg" alt="">
               <span>初中数学</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="../../static/images/5.svg" alt="">
+              <img src="@public/images/5.svg" alt="">
               <span>错题秘籍</span>
             </a>
           </div>
@@ -68,25 +68,17 @@
 
 <script>
 export default {
-  data() {
-    return {
-      searchOption: {},
-      subjectOption: []
+  props: ["option"],
+  created() {
+    if (this.option.subjectList.length > 7) {
+      this.option.subjectList.length = 7;
     }
-  },
-  mounted() {
-    this.$event.on(this, 'setupSearchOption', (searchOption) => {
-      this.searchOption = searchOption;
-    })
-    this.$event.on(this, 'setupSubjectOption', (subjectOption) => {
-      subjectOption.length = subjectOption.length > 7 ? 7 : subjectOption.length;
-      subjectOption.forEach((item, index) => {
-        item.current = index == 0 ? true : false;
-      });
-      this.subjectOption = subjectOption;
-    })
+
+    this.option.subjectList.forEach((item, index) => {
+      if (index == 0) item.current = true;
+    });
   }
-}
+};
 </script>
 
 <style lang="less" scoped>

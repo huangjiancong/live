@@ -8,6 +8,7 @@ Vue.use(vueInstall)
 // route-level code splitting
 const index = r => require(['../views/index.vue'], r)
 const productDetails = r => require(['../views/productDetails.vue'], r)
+const courseList = r => require(['../views/courseList.vue'], r)
 
 export function createRouter() {
   return new Router({
@@ -24,7 +25,16 @@ export function createRouter() {
         path: '/productDetails/:courseId',
         name: 'productDetails',
         component: productDetails
+      },
+      {
+        path: '/courseList',
+        name: 'courseList',
+        component: courseList
       }
+
+
     ]
   })
 }
+
+

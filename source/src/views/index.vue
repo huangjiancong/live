@@ -2,11 +2,9 @@
     <div class="index">
 
         <div class="bgfff">
-            <!-- <HeaderHolder> -->
-                <AsyncPanel>
-                    <!-- <Banner /> -->
-                </AsyncPanel>
-            <!-- </HeaderHolder> -->
+            <HeaderHolder :option="index.gradeAndSubject">
+                <Banner :option="index.banner" />
+            </HeaderHolder>
         </div>
 
       <div class="list">
@@ -19,25 +17,38 @@
 
 <script>
 import AsyncPanel from "../components/AsyncPanel";
-// import HeaderHolder from "../components/HeaderHolder";
+import HeaderHolder from "../components/HeaderHolder";
+import Banner from "../components/Banner";
 
 import { mapGetters } from "vuex";
 
 export default {
   title: "首页",
+  data() {
+    return {};
+  },
   computed: {
     ...mapGetters(["index"])
   },
   asyncData({ store, route }) {
+    var gradeAndSubject = new Promise((resolve, reject) => {
+      resolve(store.dispatch("index_set_gradeAndSubject"));
+    });
+
+    var banner = new Promise((resolve, reject) => {
+      resolve(store.dispatch("index_set_banner"));
+    });
+
     var newCourse = new Promise((resolve, reject) => {
       resolve(store.dispatch("index_set_newCourse"));
     });
 
-    return Promise.all([newCourse]);
+    return Promise.all([gradeAndSubject, newCourse, banner]);
   },
   components: {
-    AsyncPanel
-    // HeaderHolder
+    AsyncPanel,
+    Banner,
+    HeaderHolder
   }
 };
 </script>

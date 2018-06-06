@@ -10,6 +10,8 @@ export function createStore() {
   return new Vuex.Store({
     state: {
       index: {
+        gradeAndSubject: {},
+        banner: [],
         newCourse: [],
       },
       productDetails: {

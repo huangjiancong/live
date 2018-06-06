@@ -24,6 +24,7 @@
     "http-proxy-middleware": "^0.18.0",
     "lru-cache": "^4.1.1",
     "route-cache": "0.4.3",
+    "swiper": "^4.3.3",
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.16",

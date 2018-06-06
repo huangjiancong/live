@@ -1,11 +1,11 @@
 <template>
   <div class="J_AsyncPanel">
-    <div v-if="!option.success" class="loading">
+    <div v-if="(JSON.stringify(option) == '{}' || JSON.stringify(option) == '[]')" class="loading">
       <img src="../../public/images/0.svg" alt="">
       <p>正在玩命加载中...</p>
     </div>
     <slot></slot>
-    <div v-if="(JSON.stringify(option.data) == '{}' || JSON.stringify(option.data) == '[]')" class="dataEmpty">
+    <div v-if="option == null" class="dataEmpty">
       对不起，暂时没有找到相关数据
     </div>
   </div>
@@ -13,12 +13,7 @@
 
 <script>
 export default {
-  data() {
-    return {
-      option: {}
-    };
-  },
-  mounted() {}
+  props: ["option"]
 };
 </script>
 

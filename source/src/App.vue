@@ -1,10 +1,22 @@
 <template>
   <div id="app">
-    <transition name="fade" mode="out-in">
-      <router-view class="view"></router-view>
-    </transition>
+    <router-view class="view"></router-view>
+    <Navigation />
   </div>
 </template>
+
+
+<script>
+import Navigation from "./components/Navigation";
+
+export default {
+  name: "App",
+  mounted() {},
+  components: {
+    Navigation
+  }
+};
+</script>
 
 
 <style lang="less">
