@@ -50,7 +50,7 @@ html {
 }
 
 body {
-  background-color: #f8fafc;
+  background-color: #f4f4f4;
   // background-color: #fff;
   font-size: 20px;
 }

@@ -21,7 +21,7 @@
       </div>
       <div class="subjectList clearfix">
         <div class="list">
-          <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
+          <div v-for="item in computedOption.subjectList" class="item" :class="{ current : item.current }">
             <a href="javascript:;">{{ item.name }}</a>
           </div>
         </div>
@@ -69,15 +69,25 @@
 <script>
 export default {
   props: ["option"],
-  created() {
-    if (this.option.subjectList.length > 7) {
-      this.option.subjectList.length = 7;
-    }
+  computed: {
+    computedOption() {
+      this.option.subjectList.unshift({
+        name: "推荐",
+        subjectId: ""
+      });
 
-    this.option.subjectList.forEach((item, index) => {
-      if (index == 0) item.current = true;
-    });
-  }
+      if (this.option.subjectList.length > 7) {
+        this.option.subjectList.length = 7;
+      }
+
+      this.option.subjectList.forEach((item, index) => {
+        if (index == 0) item.current = true;
+      });
+
+      return this.option;
+    }
+  },
+  created() {}
 };
 </script>
 
@@ -99,13 +109,13 @@ export default {
     overflow: hidden;
     &::after {
       @height: 400px;
+      .linear-gradient();
       position: absolute;
       left: 50%;
       bottom: 0;
       margin-left: -320px;
       width: 640px;
       height: @height;
-      background: linear-gradient(146deg, #62dcfd, #409bfd);
       content: "";
     }
   }
@@ -155,7 +165,7 @@ export default {
               > i {
                 position: relative;
                 top: 9px;
-                font-size: 35px;
+                font-size: 37px;
                 vertical-align: top;
               }
             }

@@ -1,17 +1,16 @@
 <template>
     <div class="index">
 
-        <div class="bgfff">
-            <HeaderHolder :option="index.gradeAndSubject">
-                <Banner :option="index.banner" />
-            </HeaderHolder>
-        </div>
-
-      <div class="list">
-        <div v-for="item in index.newCourse" class="item">
-          <router-link :to="{ name : 'productDetails' , params : { courseId : item.courseId } }">{{ item.title }}</router-link>
-        </div>
+      <div class="bgfff">
+          <HeaderHolder :option="index.gradeAndSubject">
+              <Banner :option="index.banner" />
+          </HeaderHolder>
       </div>
+
+      <div class="mt20">
+        <ProductList :option="index.newCourse" />
+      </div>
+      
     </div>
 </template>
 
@@ -19,6 +18,7 @@
 import AsyncPanel from "../components/AsyncPanel";
 import HeaderHolder from "../components/HeaderHolder";
 import Banner from "../components/Banner";
+import ProductList from "../components/ProductList";
 
 import { mapGetters } from "vuex";
 
@@ -47,8 +47,9 @@ export default {
   },
   components: {
     AsyncPanel,
+    HeaderHolder,
     Banner,
-    HeaderHolder
+    ProductList
   }
 };
 </script>

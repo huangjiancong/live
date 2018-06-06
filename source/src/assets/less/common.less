@@ -8,3 +8,15 @@
 @color7: #cacaca;
 @color8: #eee;
 @br: 8px;
+
+.text-row-overflow(@row){
+    overflow:hidden; 
+    text-overflow:ellipsis;
+    display:-webkit-box; 
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:@row; 
+}
+
+.linear-gradient(){
+    background: linear-gradient(146deg, #62dcfd, #409bfd);
+}
