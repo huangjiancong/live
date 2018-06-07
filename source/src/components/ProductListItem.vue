@@ -1,49 +1,41 @@
 <template>
-    <div :class="{ isPlay : option.item.isPlay }" @click="href(option.item)" :data-href="option.item.courseId" class="J_ProductListItem">
-      <div class="inner">
-          <div class="teacher clearfix">
-            <div class="face">
-              <img src="" alt="">
-            </div>
-            <div class="details">
-                <div class="teacherName">{{ option.item.teacherName }}</div>
-                <div class="orgName">{{ option.item.orgName }}</div>
-            </div>
-          </div>
-          <div class="resources">
-            <img :src="option.item.cover" :alt="option.item.title">
-            <video ref="video" src="http://test.huifang.zycourse.com/recordings/z1.testzycourse.5b16256820a05d020c207134/698002972889579520.m3u8" preload="none" playsinline="true" x-webkit-airplay="true" webkit-playsinline="true" controls="true"></video>
+    <div :class="{ isPlay : option.item.isPlay }" :data-href="option.item.courseId" class="J_ProductListItem">
+      <router-link :to="{ name: 'productDetails' , params: { courseId: option.item.courseId } }" class="inner">
+        <div class="teacher clearfix">
+          <div class="face">
+            <img src="" alt="">
           </div>
           <div class="details">
-            <div class="title">{{ option.item.title }}</div>
-            <div class="intro">{{ computedIntro }}</div>
-            <div class="labelList">
-              <div v-for="item in computedLabel" class="item">{{ item }}</div>
-            </div>
-            <div @click.stop="play(option.item)" class="play">
-              <i class="icon icon-play"></i>
-              <div @click.stop="control(option.item)" class="control clearfix">
-                  <div class="like">
-                    <a href="javascript:;">
-                      <i class="icon icon-heart"></i>
-                    </a>
-                  </div>
-                  <div @click.stop="pause(option.item)" class="pause">
-                    <a href="javascript:;">
-                      <i class="icon icon-x"></i>
-                    </a>
-                  </div>
-                  <div class="full">
-                    <a href="javascript:;">
-                      <i class="icon icon-airplay"></i>
-                    </a>
-                  </div>
-                </div>
+              <div class="teacherName">{{ option.item.teacherName }}</div>
+              <div class="orgName">{{ option.item.orgName }}</div>
+          </div>
+        </div>
+        <div class="resources">
+          <img :src="option.item.cover" :alt="option.item.title">
+          <video ref="video" src="http://test.huifang.zycourse.com/recordings/z1.testzycourse.5b16256820a05d020c207134/698002972889579520.m3u8" preload="none" playsinline="true" x-webkit-airplay="true" webkit-playsinline="true" controls="true"></video>
+        </div>
+        <div class="details">
+          <div class="title">{{ option.item.title }}</div>
+          <div class="intro">{{ computedIntro }}</div>
+          <div class="labelList">
+            <div v-for="item in computedLabel" class="item">{{ item }}</div>
+          </div>
+          <div @click.prevent="play(option.item)" class="play">
+            <i class="icon icon-play"></i>
+            <div @click.stop.prevent="control(option.item)" class="control clearfix">
+              <div class="like">
+                <i class="icon icon-heart"></i>
+              </div>
+              <div @click.stop.prevent="pause(option.item)" class="pause">
+                <i class="icon icon-x"></i>
+              </div>
+              <div class="full">
+                <i class="icon icon-airplay"></i>
               </div>
             </div>
           </div>
-          <!-- <router-link :to="{ name : 'productDetails' , params : { courseId : option.courseId } }"></router-link> -->
-      </div>
+        </div>
+      </router-link>
     </div>
 </template>
 
@@ -83,12 +75,6 @@ export default {
     }
   },
   methods: {
-    href(item) {
-      this.$router.push({
-        name: "productDetails",
-        params: { courseId: item.courseId }
-      });
-    },
     play(item) {
       this.option.all.forEach(optionItem => {
         if (optionItem.courseId == item.courseId) {
@@ -121,6 +107,7 @@ export default {
 @import "../assets/less/common.less";
 .J_ProductListItem {
   > .inner {
+    display: block;
     > .teacher {
       padding: 20px;
       > .face {
@@ -191,7 +178,7 @@ export default {
       }
       > .play {
         .linear-gradient();
-        transition: all 0.2s ease-in;
+        transition: all 0.2s ease-out;
         position: absolute;
         right: 32px;
         top: -46px;
@@ -215,7 +202,7 @@ export default {
           padding: 40px;
           > .like {
             float: left;
-            > a {
+            > i {
               font-size: 36px;
               color: #fff;
             }
@@ -224,14 +211,14 @@ export default {
             float: left;
             margin-left: 210px;
             margin-top: -10px;
-            > a {
+            > i {
               font-size: 52px;
               color: #fff;
             }
           }
           > .full {
             float: right;
-            > a {
+            > i {
               font-size: 36px;
               color: #fff;
             }
