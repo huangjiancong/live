@@ -4,7 +4,7 @@
             <div class="swiper-wrapper">
                 <div v-for="(item,index) in option" class="swiper-slide">
                     <a href="javascript:;">
-                        <img :src="item" :alt="item">
+                        <img :src="item" :alt="`swiper-slide-${index}`">
                     </a>
                 </div>
             </div>
