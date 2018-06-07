@@ -13,6 +13,12 @@ export default {
     INDEX_SET_NEWCOURSE: (state, option) => {
         state.index.newCourse = option;
     },
+    COURSEFILTERLIST_SET_GRADEANDSUBJECT: (state, option) => {
+        state.courseFilterList.gradeAndSubject = option;
+    },
+    COURSEFILTERLIST_SET_COURSELIST: (state, option) => {
+        state.courseFilterList.courseList = option;
+    },
     PRODUCTDETAILS_SET_DETAILS: (state, option) => {
         state.productDetails.details = option;
     }

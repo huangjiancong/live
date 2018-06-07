@@ -24,7 +24,7 @@ export default {
         {
           icon: "",
           title: "分类",
-          to: "courseList"
+          to: "courseFilterList"
         },
         {
           icon: "",

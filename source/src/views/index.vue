@@ -31,9 +31,6 @@ import { mapGetters } from "vuex";
 export default {
   title: "首页",
   mixins: [mixins],
-  data() {
-    return {};
-  },
   computed: {
     ...mapGetters(["index"])
   },

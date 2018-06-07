@@ -69,6 +69,12 @@ input {
   font-size: 20px;
 }
 
+select {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+}
+
 input::-webkit-input-placeholder {
   color: #999;
 }

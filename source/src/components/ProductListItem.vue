@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ isPlay : option.item.isPlay }" :data-href="option.item.courseId" class="J_ProductListItem">
+    <div :class="{ isPlay : option.item.isPlay }" class="J_ProductListItem">
       <router-link :to="{ name: 'productDetails' , params: { courseId: option.item.courseId } }" class="inner">
         <div class="teacher clearfix">
           <div class="face">
@@ -153,6 +153,8 @@ export default {
       padding: 20px;
       height: 136px;
       > .title {
+        .text-overflow();
+        width: 500px;
         font-size: 26px;
         color: @color2;
       }

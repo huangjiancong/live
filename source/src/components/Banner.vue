@@ -3,14 +3,12 @@
         <div ref="container" class="swiper-container">
             <div class="swiper-wrapper">
                 <div v-for="(item,index) in option" class="swiper-slide">
-                    <a href="javascript:;">
-                        <img :src="item" :alt="`swiper-slide-${index}`">
-                    </a>
+                    <router-link :to="{ name: 'productDetails' , params: { courseId: item.courseId } }">
+                      <img :src="item.cover" :alt="item.title">
+                    </router-link>
                 </div>
             </div>
-            <!-- Add Pagination -->
             <div ref="pagination" class="swiper-pagination"></div>
-            <!-- Add Arrows -->
         </div>
     </div>
 </template>
@@ -22,10 +20,8 @@ import "../assets/less/swiper.less";
 export default {
   swiper: null,
   props: ["option"],
-  data() {
-    return {};
-  },
   mounted() {
+    console.log(this.option);
     var _this = this;
 
     this.$nextTick(() => {

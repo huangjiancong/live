@@ -15,6 +15,10 @@ export function createStore() {
         hotCourse: [],
         newCourse: []
       },
+      courseFilterList: {
+        gradeAndSubject: {},
+        courseList: []
+      },
       productDetails: {
         details: {}
       }

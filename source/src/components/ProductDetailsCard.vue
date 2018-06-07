@@ -1,10 +1,10 @@
 <template>
     <div class="J_ProductDetails">
-      <div class="inner">
+      <div class="inner" :style="{ minHeight : `${minHeight}px` }">
         <div class="cover">
           <img :src="option.cover" :alt="option.title">
         </div>
-        <div class="details" :style="{ minHeight : `${minHeight}px` }">
+        <div class="details">
           <div class="mask"></div>
           <div class="main">
             <div class="orgName">{{ option.orgName }}</div>
@@ -133,6 +133,7 @@ export default {
   }
   > .inner {
     width: 100%;
+    background-color: #fff;
     overflow: hidden;
     > .cover {
       animation: cover 1s ease-out forwards;
@@ -234,6 +235,7 @@ export default {
         bottom: 0;
         width: 100%;
         background-color: #fff;
+        overflow: hidden;
         > .btnList {
           > .item {
             float: left;
