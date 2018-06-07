@@ -9,10 +9,10 @@
               </select>
             </div>
         </div>
-        <div class="main">
-          <div class="mt20">
-            <ProductList :option="courseFilterList.courseList" />
-          </div>
+      </div>
+      <div class="main">
+        <div class="mt20">
+          <ProductList :option="courseFilterList.courseList" />
         </div>
       </div>
     </div>
