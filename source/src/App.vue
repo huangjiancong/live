@@ -61,7 +61,11 @@ a {
 
 img,
 input {
+  pointer-events: none;
   border: none;
+}
+
+input {
   font-size: 20px;
 }
 

@@ -1,5 +1,5 @@
 <template>
-    <div :class="{ isPlay : option.item.isPlay }" @click="href(option.item)" class="J_ProductListItem">
+    <div :class="{ isPlay : option.item.isPlay }" @click="href(option.item)" :data-href="option.item.courseId" class="J_ProductListItem">
       <div class="inner">
           <div class="teacher clearfix">
             <div class="face">
@@ -12,11 +12,14 @@
           </div>
           <div class="resources">
             <img :src="option.item.cover" :alt="option.item.title">
-            <video ref="video" src="http://test.huifang.zycourse.com/recordings/z1.testzycourse.5b16256820a05d020c207134/698002972889579520.m3u8"></video>
+            <video ref="video" src="http://test.huifang.zycourse.com/recordings/z1.testzycourse.5b16256820a05d020c207134/698002972889579520.m3u8" preload="none" playsinline="true" x-webkit-airplay="true" webkit-playsinline="true" controls="true"></video>
           </div>
           <div class="details">
             <div class="title">{{ option.item.title }}</div>
-            <div class="intro">{{ option.item.intro.replace(/<[^>]+>/g,'') }}</div>
+            <div class="intro">{{ computedIntro }}</div>
+            <div class="labelList">
+              <div v-for="item in computedLabel" class="item">{{ item }}</div>
+            </div>
             <div @click.stop="play(option.item)" class="play">
               <i class="icon icon-play"></i>
               <div @click.stop="control(option.item)" class="control clearfix">
@@ -27,7 +30,7 @@
                   </div>
                   <div @click.stop="pause(option.item)" class="pause">
                     <a href="javascript:;">
-                      <i class="icon icon-pause"></i>
+                      <i class="icon icon-x"></i>
                     </a>
                   </div>
                   <div class="full">
@@ -47,6 +50,38 @@
 <script>
 export default {
   props: ["option"],
+  computed: {
+    computedIntro() {
+      var result = "";
+      var { item } = this.option;
+      var intro = item.intro.replace(/<[^>]+>/g, "");
+      var gradeName = item.gradeName.split("|").join("、");
+      var orgName = item.orgName;
+      var teacherName = item.teacherName;
+      if (intro) {
+        result = intro;
+      } else {
+        result = `本教材是由${orgName}机构中的${teacherName}老师根据,目前${gradeName}的在读学生原则编写而成。`;
+      }
+      return result;
+    },
+    computedLabel() {
+      var result = [];
+      var { item } = this.option;
+      var subjectName = item.subjectName.split("|");
+      var gradeName = item.gradeName.split("|");
+
+      if (subjectName.length) {
+        subjectName.forEach(item => result.push(item));
+      }
+
+      if (gradeName.length) {
+        gradeName.forEach(item => result.push(item));
+      }
+
+      return result;
+    }
+  },
   methods: {
     href(item) {
       this.$router.push({
@@ -129,21 +164,34 @@ export default {
     > .details {
       position: relative;
       padding: 20px;
-      height: 128px;
+      height: 136px;
       > .title {
         font-size: 26px;
         color: @color2;
       }
       > .intro {
-        .text-row-overflow(3);
-        margin-top: 10px;
+        .text-row-overflow(2);
+        margin-top: 8px;
+        height: 56px;
         line-height: 28px;
         font-size: 18px;
         color: @color4;
       }
+      > .labelList {
+        margin-top: 10px;
+        > .item {
+          .linear-gradient();
+          display: inline-block;
+          padding: 0 10px;
+          margin-right: 14px;
+          border-radius: 3px;
+          font-size: 16px;
+          color: #fff;
+        }
+      }
       > .play {
         .linear-gradient();
-        transition: all 0.2s ease-out;
+        transition: all 0.2s ease-in;
         position: absolute;
         right: 32px;
         top: -46px;

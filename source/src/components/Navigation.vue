@@ -1,5 +1,5 @@
 <template>
-    <div class="J_Navigation">
+    <div v-if="option.filter(item => item.to == $route.name).length" class="J_Navigation">
         <div class="inner">
             <div v-for="item in option" class="item" :class="{ current : item.to == $route.name }">
                 <router-link :to="{ name : item.to }">
@@ -25,11 +25,6 @@ export default {
           icon: "",
           title: "分类",
           to: "courseList"
-        },
-        {
-          icon: "",
-          title: "机构",
-          to: "org"
         },
         {
           icon: "",
@@ -62,7 +57,7 @@ export default {
     border-top: 1px solid @color8;
     > .item {
       float: left;
-      width: 20%;
+      width: 25%;
       text-align: center;
       > a {
         display: block;
