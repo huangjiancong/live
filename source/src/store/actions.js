@@ -34,11 +34,23 @@ export default {
         })
 
     },
+    index_set_hotCourse({ commit }, option) {
+
+        return new Promise((resolve, reject) => {
+
+            axios.get('/h5api/hotCourse', { params: { size: 12 } }).then((res) => {
+                var { data } = res.data;
+                resolve(commit('INDEX_SET_HOTCOURSE', data))
+            })
+
+        })
+
+    },
     index_set_newCourse({ commit }, option) {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/h5api/newCourse', { params: { size: 10 } }).then((res) => {
+            axios.get('/h5api/newCourse', { params: { size: 12 } }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('INDEX_SET_NEWCOURSE', data))
             })

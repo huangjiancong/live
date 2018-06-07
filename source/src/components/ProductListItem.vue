@@ -46,7 +46,7 @@ export default {
     computedIntro() {
       var result = "";
       var { item } = this.option;
-      var intro = item.intro.replace(/<[^>]+>/g, "");
+      var intro = item.intro.replace(/<[^>]+>|&nbsp;/g, "");
       var gradeName = item.gradeName.split("|").join("、");
       var orgName = item.orgName;
       var teacherName = item.teacherName;

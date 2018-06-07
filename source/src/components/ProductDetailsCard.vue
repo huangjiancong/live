@@ -4,7 +4,7 @@
         <div class="cover">
           <img :src="option.cover" :alt="option.title">
         </div>
-        <div class="details">
+        <div class="details" :style="{ minHeight : `${minHeight}px` }">
           <div class="mask"></div>
           <div class="main">
             <div class="orgName">{{ option.orgName }}</div>
@@ -48,11 +48,16 @@
 <script>
 export default {
   props: ["option"],
+  data() {
+    return {
+      minHeight: 0
+    };
+  },
   computed: {
     computedIntro() {
       var result = "";
       var { option } = this;
-      var intro = option.intro.replace(/<[^>]+>/g, "");
+      var intro = option.intro.replace(/<[^>]+>|&nbsp;/g, "");
       var gradeName = option.gradeName.split("|").join("、");
       var orgName = option.orgName;
       var teacherName = option.teacherName;
@@ -84,6 +89,7 @@ export default {
     this.$set(this.option, "imgList", []);
   },
   mounted() {
+    this.minHeight = window.innerHeight;
     /* 富文本图片处理 */
     var $el = document.createElement("div");
     $el.innerHTML = this.option.intro;
@@ -140,7 +146,6 @@ export default {
       animation: details 1.2s ease-out forwards;
       position: relative;
       padding: 60px 0 30px;
-      min-height: 740px;
       background-color: #fff;
       > .mask {
         position: absolute;

@@ -6,6 +6,10 @@
               <Banner :option="index.banner" />
           </HeaderHolder>
       </div>
+      
+      <!-- <div class="mt20">
+        <ProductList :option="index.hotCourse" />
+      </div> -->
 
       <div class="mt20">
         <ProductList :option="index.newCourse" />
@@ -38,6 +42,10 @@ export default {
     var banner = new Promise((resolve, reject) => {
       resolve(store.dispatch("index_set_banner"));
     });
+
+    // var hotCourse = new Promise((resolve, reject) => {
+    //   resolve(store.dispatch("index_set_hotCourse"));
+    // });
 
     var newCourse = new Promise((resolve, reject) => {
       resolve(store.dispatch("index_set_newCourse"));

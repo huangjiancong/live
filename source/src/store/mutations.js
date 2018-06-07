@@ -7,6 +7,9 @@ export default {
     INDEX_SET_BANNER: (state, option) => {
         state.index.banner = option;
     },
+    INDEX_SET_HOTCOURSE: (state, option) => {
+        state.index.hotCourse = option;
+    },
     INDEX_SET_NEWCOURSE: (state, option) => {
         state.index.newCourse = option;
     },

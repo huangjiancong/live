@@ -12,7 +12,8 @@ export function createStore() {
       index: {
         gradeAndSubject: {},
         banner: [],
-        newCourse: [],
+        hotCourse: [],
+        newCourse: []
       },
       productDetails: {
         details: {}
