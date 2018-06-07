@@ -19,6 +19,8 @@
 </template>
 
 <script>
+import mixins from "mixins";
+
 import AsyncPanel from "../components/AsyncPanel";
 import HeaderHolder from "../components/HeaderHolder";
 import Banner from "../components/Banner";
@@ -28,6 +30,7 @@ import { mapGetters } from "vuex";
 
 export default {
   title: "首页",
+  mixins: [mixins],
   data() {
     return {};
   },

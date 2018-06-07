@@ -18,6 +18,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
+      'mixins': '../mixins/mixins.js',
       'swiper': 'swiper/dist/js/swiper.js',
       '@public': path.resolve(__dirname, '../public')
     }

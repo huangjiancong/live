@@ -38,25 +38,25 @@
         <div class="list">
           <div class="item">
             <a href="javascript:;">
-              <img src="@public/images/2.svg" alt="">
+              <img src="@public/images/2.png" alt="">
               <span>推荐课程</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="@public/images/3.svg" alt="">
+              <img src="@public/images/3.png" alt="">
               <span>精品课程</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="@public/images/4.svg" alt="">
+              <img src="@public/images/4.png" alt="">
               <span>初中数学</span>
             </a>
           </div>
           <div class="item">
             <a href="javascript:;">
-              <img src="@public/images/5.svg" alt="">
+              <img src="@public/images/5.png" alt="">
               <span>错题秘籍</span>
             </a>
           </div>
