@@ -28,32 +28,48 @@ export default {
   mixins: [mixins],
   data() {
     return {
-      grade: ""
+      grade: "全部"
     };
-  },
-  created() {
-    if (this.courseFilterList && this.courseFilterList.gradeAndSubject) {
-      this.grade = this.courseFilterList.gradeAndSubject.gradeList[0].name;
-    }
-  },
-  watch: {
-    grade(newValue) {
-      var { params } = this.$route;
-      this.$router.replace({
-        name: "courseFilterList",
-        params: {
-          grade: newValue,
-          subject: params.subject
-        }
-      });
-    }
   },
   computed: {
     ...mapGetters(["courseFilterList"])
   },
+  watch: {
+    grade(newValue) {
+      var { subject } = this.$route.params;
+      console.log(subject);
+      if (!newValue || newValue == "全部") {
+        newValue = "";
+      }
+      this.$router.replace({
+        name: "courseFilterList",
+        params: {
+          grade: newValue,
+          subject
+        }
+      });
+    }
+  },
+  created() {
+    var { gradeList } = this.courseFilterList.gradeAndSubject;
+    if (gradeList[0].name != "全部") {
+      gradeList.unshift({
+        subjectId: "",
+        name: "全部"
+      });
+    }
+  },
   asyncData({ store, route }) {
-    var { params } = route;
-    console.log(route.params);
+    var { grade } = route.params;
+    var { subject } = route.params;
+
+    if (!grade || grade == "全部") {
+      grade = "";
+    }
+    if (!subject || subject == "全部") {
+      subject = "";
+    }
+
     var gradeAndSubject = new Promise((resolve, reject) => {
       resolve(store.dispatch("courseFilterList_set_gradeAndSubject"));
     });
@@ -61,8 +77,8 @@ export default {
     var courseList = new Promise((resolve, reject) => {
       resolve(
         store.dispatch("courseFilterList_set_courseList", {
-          grade: params.grade,
-          subject: params.subject
+          grade,
+          subject
         })
       );
     });

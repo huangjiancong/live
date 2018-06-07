@@ -10,7 +10,9 @@
       <div class="subjectList clearfix">
         <div class="list">
           <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
-            <a href="javascript:;">{{ item.name }}</a>
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '全部' , subject : item.name } }">
+              {{ item.name }}
+            </router-link>
           </div>
         </div>
         <div class="more">

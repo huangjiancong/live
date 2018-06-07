@@ -21,7 +21,6 @@ export default {
   swiper: null,
   props: ["option"],
   mounted() {
-    console.log(this.option);
     var _this = this;
 
     this.$nextTick(() => {

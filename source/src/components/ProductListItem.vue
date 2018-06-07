@@ -3,7 +3,7 @@
       <router-link :to="{ name: 'productDetails' , params: { courseId: option.item.courseId } }" class="inner">
         <div class="teacher clearfix">
           <div class="face">
-            <img src="" alt="">
+            <img src="@public/images/6.png" :alt="option.item.teacherName">
           </div>
           <div class="details">
               <div class="teacherName">{{ option.item.teacherName }}</div>
@@ -111,12 +111,17 @@ export default {
     > .teacher {
       padding: 20px;
       > .face {
+        @size: 68px;
         float: left;
-        width: 68px;
-        height: 68px;
+        width: @size;
+        height: @size;
         background-color: #f4f4f4;
         border-radius: 50%;
+        overflow: hidden;
         > img {
+          width: @size;
+          height: @size;
+          vertical-align: top;
         }
       }
       > .details {

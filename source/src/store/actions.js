@@ -90,7 +90,7 @@ export default {
                     orgId: '',
                     grade,
                     subject,
-                    pageSize: 99
+                    pageSize: 10
                 }
             }).then((res) => {
                 var { data } = res.data;
