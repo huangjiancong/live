@@ -6,6 +6,7 @@ const express = require('express')
 const proxy = require('http-proxy-middleware')
 const compression = require('compression')
 const microcache = require('route-cache')
+const filesMerge = require('./api/filesMerge')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 
@@ -68,6 +69,20 @@ app.use('/api', proxy({
     '^/api': '/h5api'
   }
 }));
+
+/* images merge */
+app.use('/filesMerge', (req, res) => {
+  var { files } = req.query;
+
+  filesMerge(path.resolve("./public"), files, data => {
+    res.json({
+      data,
+      success: true
+    });
+  });
+
+
+});
 
 app.use(compression({ threshold: 0 }))
 app.use('/dist', serve('./dist', true))

@@ -47,7 +47,7 @@ export default {
   position: relative;
   > .goBack {
     @size: 56px;
-    position: absolute;
+    position: fixed;
     z-index: 99;
     left: 20px;
     top: 20px;
