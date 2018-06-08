@@ -22,6 +22,12 @@
                 <div v-for="item in option.imgList" class="item"><img :src="item" :alt="option.title"></div>
               </div>
             </div>
+            <div v-if="option.lectureList && option.lectureList.length" class="lectureList">
+              <div class="title">课程章节</div>
+              <div class="list">
+                <div v-for="(item,index) in option.lectureList" class="item">{{ index + 1 }}、{{ item.title }}</div>
+              </div>
+            </div>
             <div class="like">
               <a href="javascript:;">
                 <i class="icon icon-heart"></i>
@@ -201,6 +207,23 @@ export default {
                 width: 100%;
                 vertical-align: top;
               }
+            }
+          }
+        }
+        > .lectureList {
+          margin-top: 60px;
+          > .title {
+            text-align: center;
+            letter-spacing: 6px;
+            font-size: 26px;
+            color: @color2;
+          }
+          > .list {
+            margin-top: 20px;
+            > .item {
+              margin-top: 20px;
+              font-size: 24px;
+              color: @color4;
             }
           }
         }
