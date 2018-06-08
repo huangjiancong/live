@@ -1,6 +1,12 @@
 import Vue from 'vue'
 
 export default {
+    WINDOW_SET_WIDTH: (state, option) => {
+        state.window.width = option;
+    },
+    WINDOW_SET_HEIGHT: (state, option) => {
+        state.window.height = option;
+    },
     INDEX_SET_GRADEANDSUBJECT: (state, option) => {
         state.index.gradeAndSubject = option;
     },

@@ -11,7 +11,24 @@ import Navigation from "./components/Navigation";
 
 export default {
   name: "App",
-  mounted() {},
+  methods: {
+    getWindowSize() {
+      this.$store.dispatch(
+        "window_set_width",
+        document.documentElement.clientWidth || document.body.clientWidth
+      );
+      this.$store.dispatch(
+        "window_set_height",
+        document.documentElement.clientHeight || document.body.clientHeight
+      );
+    }
+  },
+  mounted() {
+    this.getWindowSize();
+    window.addEventListener("resize", () => {
+      this.getWindowSize();
+    });
+  },
   components: {
     Navigation
   }
@@ -61,8 +78,11 @@ a {
 
 img,
 input {
-  pointer-events: none;
   border: none;
+}
+
+img {
+  pointer-events: none;
 }
 
 input {

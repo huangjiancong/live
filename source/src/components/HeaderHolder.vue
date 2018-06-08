@@ -10,7 +10,7 @@
       <div class="subjectList clearfix">
         <div class="list">
           <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
-            <router-link :to="{ name : 'courseFilterList' , params : { grade : '全部' , subject : item.name } }">
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : item.name } }">
               {{ item.name }}
             </router-link>
           </div>
@@ -27,28 +27,28 @@
       <div class="enterList clearfix">
         <div class="list">
           <div class="item">
-            <a href="javascript:;">
-              <img src="@public/images/2.png" alt="">
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : '全部' } }">
+              <img src="@public/images/2.png" alt="推荐课程">
               <span>推荐课程</span>
-            </a>
+            </router-link>
           </div>
           <div class="item">
-            <a href="javascript:;">
-              <img src="@public/images/3.png" alt="">
-              <span>精品课程</span>
-            </a>
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : '全部' } }">
+              <img src="@public/images/3.png" alt="热门课程">
+              <span>热门课程</span>
+            </router-link>
           </div>
           <div class="item">
-            <a href="javascript:;">
-              <img src="@public/images/4.png" alt="">
-              <span>初中数学</span>
-            </a>
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : '数学' } }">
+              <img src="@public/images/4.png" alt="数学课程">
+              <span>数学课程</span>
+            </router-link>
           </div>
           <div class="item">
-            <a href="javascript:;">
-              <img src="@public/images/5.png" alt="">
-              <span>错题秘籍</span>
-            </a>
+            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : '英语' } }">
+              <img src="@public/images/5.png" alt="英语课程">
+              <span>英语课程</span>
+            </router-link>
           </div>
         </div>
       </div>
@@ -188,7 +188,7 @@ export default {
           > a {
             display: block;
             text-align: center;
-            color: @color2;
+            color: @color3;
             > img {
               width: 80px;
               height: 80px;

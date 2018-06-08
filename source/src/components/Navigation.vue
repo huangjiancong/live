@@ -2,7 +2,7 @@
     <div v-if="option.filter(item => item.to == $route.name).length" class="J_Navigation">
         <div class="inner">
             <div v-for="item in option" class="item" :class="{ current : item.to == $route.name }">
-                <router-link :to="{ name : item.to }">
+                <router-link :to="{ name : item.to , params : { grade : $route.params.grade , subject : $route.params.subject } }">
                     <i class="icon">{{ item.icon }}</i>
                     <span>{{ item.title }}</span>
                 </router-link>
@@ -27,19 +27,18 @@ export default {
           to: "courseFilterList"
         },
         {
-          icon: "",
-          title: "购物车",
+          icon: "",
+          title: "机构",
           to: "cart"
         },
         {
           icon: "",
-          title: "我的",
-          to: "userCenter"
+          title: "关于",
+          to: "about"
         }
       ]
     };
-  },
-  methods: {}
+  }
 };
 </script>
 

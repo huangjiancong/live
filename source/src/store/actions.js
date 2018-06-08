@@ -3,6 +3,20 @@ import axios from 'axios';
 axios.defaults.baseURL = 'http://api.zycourse.com'
 
 export default {
+    window_set_width({ commit }, option) {
+
+        return new Promise((resolve, reject) => {
+            resolve(commit('WINDOW_SET_WIDTH', option))
+        })
+
+    },
+    window_set_height({ commit }, option) {
+
+        return new Promise((resolve, reject) => {
+            resolve(commit('WINDOW_SET_HEIGHT', option))
+        })
+
+    },
     index_set_gradeAndSubject({ commit }, option) {
 
         return new Promise((resolve, reject) => {
@@ -84,7 +98,6 @@ export default {
 
         return new Promise((resolve, reject) => {
             // http://api.zycourse.com/h5api/queryCourse?grade=&orgId=&subject=&pageNo=1&pageSize=10&over=false
-
             axios.get('/h5api/queryCourse', {
                 params: {
                     orgId: '',
@@ -96,7 +109,6 @@ export default {
                 var { data } = res.data;
                 resolve(commit('COURSEFILTERLIST_SET_COURSELIST', data.list))
             })
-
         })
 
     },

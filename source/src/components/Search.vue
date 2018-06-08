@@ -1,8 +1,8 @@
 <template>
     <div class="J_Search">
-        <div class="input">
+        <div :class="{ focus : focus }" class="input">
             <i class="icon"></i>
-            <input placeholder="KET通关必考语法强化班" type="text">
+            <input @focus="focus = true" @blur="focus = false" placeholder="KET通关必考语法强化班" type="text">
         </div>
         <div class="btnList">
             <div class="list clearfix">
@@ -18,7 +18,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      focus: false
+    };
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -28,12 +34,14 @@ export default {};
   padding: 20px 30px 0;
   height: @height;
   > .input {
+    transition: opacity 0.4s ease-out;
     float: left;
     padding: 0 20px;
     width: 390px;
     height: @height;
     background-color: #fff;
     border-radius: @height / 2;
+    opacity: 0.4;
     > .icon {
       position: relative;
       top: 18px;
@@ -46,6 +54,9 @@ export default {};
       margin-left: 6px;
       width: 320px;
       background-color: transparent;
+    }
+    &.focus {
+      opacity: 1;
     }
   }
   > .btnList {

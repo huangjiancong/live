@@ -10,8 +10,12 @@ const index = r => require(['../views/index.vue'], r)
 const productDetails = r => require(['../views/productDetails.vue'], r)
 const courseFilterList = r => require(['../views/courseFilterList.vue'], r)
 
+const about = r => require(['../views/about.vue'], r)
+
+
 export function createRouter() {
-  return new Router({
+
+  var router = new Router({
     mode: 'history',
     fallback: false,
     // scrollBehavior: () => ({ y: 0 }),
@@ -30,11 +34,16 @@ export function createRouter() {
         path: '/courseFilterList/:grade?/:subject?',
         name: 'courseFilterList',
         component: courseFilterList
+      },
+      {
+        path: '/about',
+        name: 'about',
+        component: about
       }
-
-
     ]
   })
+
+  return router
 }
 
 
