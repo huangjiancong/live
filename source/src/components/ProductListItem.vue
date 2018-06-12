@@ -206,7 +206,7 @@ export default {
         }
         > .control {
           display: none;
-          padding: 40px;
+          padding: 70px 40px;
           > .like {
             float: left;
             > i {
@@ -217,9 +217,9 @@ export default {
           > .pause {
             float: left;
             margin-left: 210px;
-            margin-top: -10px;
+            margin-top: -18px;
             > i {
-              font-size: 52px;
+              font-size: 64px;
               color: #fff;
             }
           }

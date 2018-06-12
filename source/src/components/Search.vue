@@ -50,7 +50,7 @@ export default {
     }
     > input {
       position: relative;
-      top: 12px;
+      top: 10px;
       margin-left: 6px;
       width: 320px;
       background-color: transparent;

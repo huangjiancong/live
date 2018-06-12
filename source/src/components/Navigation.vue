@@ -44,7 +44,7 @@ export default {
   > .inner {
     position: fixed;
     z-index: 999;
-    bottom: 0;
+    bottom: -1px;
     width: 100%;
     height: @NavigationHeight;
     background-color: #fff;

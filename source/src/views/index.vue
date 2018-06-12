@@ -43,10 +43,6 @@ export default {
       resolve(store.dispatch("index_set_banner"));
     });
 
-    // var hotCourse = new Promise((resolve, reject) => {
-    //   resolve(store.dispatch("index_set_hotCourse"));
-    // });
-
     var newCourse = new Promise((resolve, reject) => {
       resolve(store.dispatch("index_set_newCourse"));
     });
