@@ -1,5 +1,5 @@
 <template>
-    <div v-if="option.filter(item => item.to == $route.name).length" class="J_Navigation">
+    <div v-if="option.filter(item => item.to == $route.name).length && $route.name != 'about'" class="J_Navigation">
         <div class="inner">
             <div v-for="item in option" class="item" :class="{ current : item.to == $route.name }">
                 <router-link :to="{ name : item.to , params : { grade : $route.params.grade , subject : $route.params.subject } }">
@@ -27,11 +27,6 @@ export default {
           to: "courseFilterList"
         },
         {
-          icon: "",
-          title: "机构",
-          to: "cart"
-        },
-        {
           icon: "",
           title: "关于",
           to: "about"
@@ -56,7 +51,7 @@ export default {
     border-top: 1px solid @color8;
     > .item {
       float: left;
-      width: 25%;
+      width: 33.33%;
       text-align: center;
       > a {
         display: block;
@@ -64,13 +59,13 @@ export default {
         > i {
           display: block;
           margin-top: 12px;
-          height: 36px;
-          font-size: 36px;
+          height: 42px;
+          font-size: 42px;
         }
         > span {
           display: block;
           margin-top: 2px;
-          font-size: 16px;
+          font-size: 18px;
         }
       }
       &.current {
