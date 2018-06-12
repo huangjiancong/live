@@ -18,6 +18,7 @@
                     <li>前端：黄健聪</li>
                 </ul>
             </div>
+            
             <div class="btn">
                 <router-link class="abtn color1" :to="{ name : 'index' }">返回首页</router-link>
             </div>
