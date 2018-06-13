@@ -12,9 +12,7 @@ RUN chmod +x /app/run.sh
 RUN cd /app
 RUN npm install -g cnpm --registry=https://registry.npm.taobao.org
 
-
-
-RUN cd /app && npm install && npm run build
+RUN cd /app && cnpm install && npm run build
 # RUN cd /app && npm install && npm run build
 EXPOSE 8080
 CMD /app/run.sh
