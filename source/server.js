@@ -10,6 +10,7 @@ const filesMerge = require('./api/filesMerge')
 const resolve = file => path.resolve(__dirname, file)
 const { createBundleRenderer } = require('vue-server-renderer')
 
+
 const isProd = process.env.NODE_ENV === 'production'
 const useMicroCache = process.env.MICRO_CACHE !== 'false'
 const serverInfo =
@@ -110,7 +111,8 @@ function render(req, res) {
   }
 
   const context = {
-    title: 'v1.0.0-beta.2',
+    title: require('./package.json').version,
+    version: require('./package.json').version,
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {

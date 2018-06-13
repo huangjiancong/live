@@ -13,7 +13,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     publicPath: '/dist/',
-    filename: '[name].[chunkhash].js'
+    filename: 'js/[name].[chunkhash].js'
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -47,7 +47,7 @@ module.exports = {
         loader: 'file-loader',
         options: {
           limit: 10000,
-          name: '[name].[hash:7].[ext]'
+          name: 'images/[name].[hash:7].[ext]'
         }
       },
       {
