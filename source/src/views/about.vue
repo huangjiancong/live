@@ -4,11 +4,11 @@
             
             <div class="resources">
                 <p>数据源</p>
-                <img src="http://dianbo.zycourse.com/ykt_logo.png?n=1528788038732" alt="">
+                <img :src="about.resourcesImg" alt="logo">
             </div>
  
-            <div class="code">
-                <img src="@public/images/8.png" alt="qrcode">
+            <div class="qrcode">
+                <img :src="about.qrcodeImg" alt="qrcode">
             </div>
             
             <div class="participant">
@@ -33,7 +33,22 @@
 </template>
 
 <script>
-export default {};
+import mixins from "mixins";
+import { mapGetters } from "vuex";
+export default {
+  title: "关于",
+  mixins: [mixins],
+  computed: {
+    ...mapGetters(["about"])
+  },
+  asyncData({ store, route }) {
+    var resourcesImgAndqrcodeImg = new Promise((resolve, reject) => {
+      resolve(store.dispatch("about_get_resourcesImg_qrcodeImg"));
+    });
+
+    return Promise.all([resourcesImgAndqrcodeImg]);
+  }
+};
 </script>
 
 <style lang="less" scoped>
@@ -62,7 +77,7 @@ export default {};
         vertical-align: top;
       }
     }
-    > .code {
+    > .qrcode {
       margin-top: 40px;
       text-align: center;
       > img {

@@ -14,6 +14,7 @@ module.exports = (path, files = "", callback) => {
             base64 += new Buffer(fs.readFileSync(src)).toString('base64');
         }
         result.push(base64);
+
     });
 
     if (callback) callback(result);

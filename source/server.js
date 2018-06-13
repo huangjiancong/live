@@ -62,6 +62,7 @@ const serve = (path, cache) => express.static(resolve(path), {
   maxAge: cache && isProd ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
+
 /* api proxy */
 app.use('/api', proxy({
   target: env.prod.API_ROOT,
@@ -72,7 +73,8 @@ app.use('/api', proxy({
 }));
 
 /* images merge */
-app.use('/filesMerge', (req, res) => {
+app.use('/filesMerge', (req, res, next) => {
+
   var { files } = req.query;
 
   filesMerge(path.resolve("./public"), files, data => {
@@ -81,6 +83,8 @@ app.use('/filesMerge', (req, res) => {
       success: true
     });
   });
+
+  next();
 
 
 });
@@ -129,6 +133,7 @@ function render(req, res) {
 app.get('*', isProd ? render : (req, res) => {
   readyPromise.then(() => render(req, res))
 })
+
 
 const port = process.env.PORT || 8080
 app.listen(port, () => {

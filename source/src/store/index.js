@@ -25,6 +25,10 @@ export function createStore() {
       },
       productDetails: {
         details: {}
+      },
+      about: {
+        resourcesImg: "",
+        qrcodeImg: ""
       }
 
     },

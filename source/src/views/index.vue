@@ -21,7 +21,6 @@
 <script>
 import mixins from "mixins";
 
-import AsyncPanel from "../components/AsyncPanel";
 import HeaderHolder from "../components/HeaderHolder";
 import Banner from "../components/Banner";
 import ProductList from "../components/ProductList";
@@ -50,7 +49,6 @@ export default {
     return Promise.all([gradeAndSubject, newCourse, banner]);
   },
   components: {
-    AsyncPanel,
     HeaderHolder,
     Banner,
     ProductList

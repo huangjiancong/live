@@ -27,5 +27,11 @@ export default {
     },
     PRODUCTDETAILS_SET_DETAILS: (state, option) => {
         state.productDetails.details = option;
+    },
+    ABOUT_SET_RESOURCESIMG: (state, option) => {
+        state.about.resourcesImg = option;
+    },
+    ABOUT_SET_QRCODEIMG: (state, option) => {
+        state.about.qrcodeImg = option;
     }
 }
