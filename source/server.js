@@ -73,7 +73,7 @@ app.use('/api', proxy({
 }));
 
 /* images merge */
-app.use('/filesMerge', (req, res, next) => {
+app.use('/filesMerge', (req, res) => {
 
   var { files } = req.query;
 
@@ -83,9 +83,6 @@ app.use('/filesMerge', (req, res, next) => {
       success: true
     });
   });
-
-  next();
-
 
 });
 
