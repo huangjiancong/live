@@ -110,7 +110,7 @@ function render(req, res) {
   }
 
   const context = {
-    title: 'v1.0.0-beta.1',
+    title: 'v1.0.0-beta.2',
     url: req.url
   }
   renderer.renderToString(context, (err, html) => {
