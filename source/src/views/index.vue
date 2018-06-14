@@ -6,10 +6,6 @@
               <Banner :option="index.banner" />
           </HeaderHolder>
       </div>
-      
-      <!-- <div class="mt20">
-        <ProductList :option="index.hotCourse" />
-      </div> -->
 
       <div class="mt20">
         <ProductList :option="index.newCourse" />

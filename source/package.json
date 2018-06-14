@@ -1,8 +1,8 @@
 {
   "name": "live-server-renderer",
   "description": "A Vue.js project",
-  "version": "v1.0.0-beta.2",
-  "author": "",
+  "version": "v1.0.0-beta.1",
+  "author": "http://github.com/huangjiancong/live",
   "private": true,
   "scripts": {
     "dev": "node server",
