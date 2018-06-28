@@ -56,10 +56,11 @@ html {
     body {
       margin: 0 auto;
       max-width: 1080px;
+      div {
+        max-width: 1080px !important;
+      }
     }
-    div {
-      max-width: 1080px !important;
-    }
+
     @media (min-width: 1080px) {
       font-size: 168.5px;
     }

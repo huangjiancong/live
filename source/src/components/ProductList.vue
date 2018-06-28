@@ -1,5 +1,5 @@
 <template>
-    <div class="J_productList">
+    <div class="J_ProductList">
       <div class="inner">
           <div class="list">
               <div v-for="item in option" class="item">
@@ -21,7 +21,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.J_productList {
+.J_ProductList {
   > .inner {
     > .list {
       > .item {

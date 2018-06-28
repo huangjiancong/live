@@ -1,5 +1,5 @@
 <template>
-    <div class="J_banner">
+    <div class="J_Banner">
         <div ref="container" class="swiper-container">
             <div class="swiper-wrapper">
                 <div v-for="(item,index) in option" class="swiper-slide">
@@ -49,7 +49,7 @@ export default {
 
 <style lang="less" scoped>
 @import "../assets/less/common.less";
-.J_banner {
+.J_Banner {
   > .swiper-container {
     > .swiper-wrapper {
       .swiper-slide {
