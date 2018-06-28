@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import mixins from "mixins";
 import ProductDetailsCard from "../components/ProductDetailsCard";
 import { mapGetters } from "vuex";
 
 export default {
-  title: "产品详情",
-  mixins: [mixins],
+  title() {
+    return this.productDetails.details.title;
+  },
   computed: {
     ...mapGetters(["productDetails"])
   },

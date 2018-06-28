@@ -71,7 +71,7 @@ export default {
           width: @height - 12px;
           height: @height - 12px;
           line-height: @height - 12px;
-          background-color: #68c7fd;
+          background-color: #acabff;
           border-radius: 50%;
           text-align: center;
           color: @color5;

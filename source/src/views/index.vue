@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import mixins from "mixins";
-
 import HeaderHolder from "../components/HeaderHolder";
 import Banner from "../components/Banner";
 import ProductList from "../components/ProductList";
@@ -25,7 +23,6 @@ import { mapGetters } from "vuex";
 
 export default {
   title: "首页",
-  mixins: [mixins],
   computed: {
     ...mapGetters(["index"])
   },

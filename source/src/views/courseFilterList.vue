@@ -35,13 +35,12 @@
 </template>
 
 <script>
-import mixins from "mixins";
 import ProductList from "../components/ProductList";
 
 import { mapGetters } from "vuex";
+
 export default {
   title: "课程分类",
-  mixins: [mixins],
   data() {
     return {
       grade: ""

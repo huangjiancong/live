@@ -33,11 +33,9 @@
 </template>
 
 <script>
-import mixins from "mixins";
 import { mapGetters } from "vuex";
 export default {
   title: "关于",
-  mixins: [mixins],
   computed: {
     ...mapGetters(["about"])
   },
