@@ -1,20 +1,19 @@
 <template>
-    <div class="index">
+<div class="index">
 
-      <div class="bgfff">
-          <HeaderHolder :option="index.gradeAndSubject">
-              <Banner :option="index.banner" />
-          </HeaderHolder>
-      </div>
+    <HeaderHolder :option="index.gradeAndSubject">
+        <Banner :option="index.banner" />
+    </HeaderHolder>
 
-      <div class="mt20">
-        <ProductList :option="index.newCourse" />
-      </div>
-      
-    </div>
+    <Caption option="最新课程" />
+    <ProductList :option="index.newCourse" />
+
+</div>
 </template>
 
 <script>
+import Caption from "../components/Caption";
+
 import HeaderHolder from "../components/HeaderHolder";
 import Banner from "../components/Banner";
 import ProductList from "../components/ProductList";
@@ -42,6 +41,7 @@ export default {
     return Promise.all([gradeAndSubject, newCourse, banner]);
   },
   components: {
+    Caption,
     HeaderHolder,
     Banner,
     ProductList

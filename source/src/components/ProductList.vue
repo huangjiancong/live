@@ -1,7 +1,7 @@
 <template>
     <div class="J_ProductList">
       <div class="inner">
-          <div class="list">
+          <div class="list clearfix">
               <div v-for="item in option" class="item">
                 <ProductListItem :option="{ all : option , item }" />
               </div>
@@ -25,8 +25,9 @@ export default {
   > .inner {
     > .list {
       > .item {
-        margin-bottom: 20px;
-        background-color: #fff;
+        float: left;
+        margin: 0 0 20px 20px;
+        width: 290px;
       }
     }
   }

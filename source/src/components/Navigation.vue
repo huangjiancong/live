@@ -27,9 +27,14 @@ export default {
           to: "courseFilterList"
         },
         {
+          icon: "",
+          title: "购物车",
+          to: "456"
+        },
+        {
           icon: "",
-          title: "关于",
-          to: "about"
+          title: "我的",
+          to: "789"
         }
       ]
     };
@@ -51,21 +56,20 @@ export default {
     border-top: 1px solid @color8;
     > .item {
       float: left;
-      width: 33.33%;
+      width: 25%;
       text-align: center;
       > a {
         display: block;
-        color: @color7;
         > i {
           display: block;
           margin-top: 12px;
-          height: 42px;
-          font-size: 42px;
+          height: 34px;
+          font-size: 34px;
         }
         > span {
           display: block;
           margin-top: 2px;
-          font-size: 18px;
+          font-size: 16px;
         }
       }
       &.current {

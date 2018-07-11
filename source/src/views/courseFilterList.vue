@@ -8,11 +8,7 @@
               <div class="title">课程分类</div>
             </div>
             <div class="right">
-                <div class="gradeName">
-                  <select v-model="grade">
-                    <option v-for="item in computedGradeList" :value="item.name">{{ item.name }}</option>
-                  </select>
-                </div>
+               
             </div>
           </div>
           <div class="filterList">
@@ -27,9 +23,7 @@
         </div>
       </div>
       <div class="main">
-        <div class="mt20">
           <ProductList :option="courseFilterList.courseList" />
-        </div>
       </div>
     </div>
 </template>
@@ -104,7 +98,7 @@ export default {
   mounted() {
     var { grade } = this.$route.params;
     if (!grade) {
-      this.grade = "小一";
+      this.grade = "初一";
     } else {
       this.grade = grade;
     }
@@ -199,22 +193,6 @@ export default {
           }
         }
         > .right {
-          position: relative;
-          z-index: 1;
-          > .gradeName {
-            position: absolute;
-            right: 20px;
-            top: 0;
-            > select {
-              height: @size;
-              opacity: 0.6;
-              color: @color4;
-              font-size: 24px;
-              > option {
-                color: #000;
-              }
-            }
-          }
         }
       }
       > .filterList {
@@ -260,6 +238,7 @@ export default {
     }
   }
   > .main {
+    margin-top: 20px;
     animation: main 1s ease-out forwards;
   }
 }

@@ -1,28 +1,30 @@
 <template>
-  <div class="J_HeaderHolder">
+<div class="J_HeaderHolder">
     <div class="background">
     </div>
     <div class="inner">
-      <!-- -->
-      <Search />
-      
-      <!-- -->
-      <div class="subjectList clearfix">
-        <div class="list">
-          <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
-            <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : item.name } }">{{ item.name }}</router-link>
-          </div>
-        </div>
-        <div class="more">
-          <a href="javascript:;">
+        <!-- -->
+        <Search />
+
+        <!-- -->
+        <div class="subjectList clearfix">
+            <div class="list">
+                <div v-for="item in option.subjectList" class="item" :class="{ current : item.current }">
+                    <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : item.name } }">{{ item.name }}</router-link>
+                </div>
+            </div>
+            <div class="more">
+                <a href="javascript:;">
             <i class="icon"></i>
           </a>
+            </div>
         </div>
-      </div>
-      <div class="banner">
-        <slot></slot>
-      </div>
-      <div class="enterList clearfix">
+        <div class="banner">
+            <slot></slot>
+        </div>
+
+        <!-- 
+        <div class="enterList clearfix">
         <div class="list">
           <div class="item">
             <router-link :to="{ name : 'courseFilterList' , params : { grade : '初一' , subject : '全部' } }">
@@ -50,8 +52,10 @@
           </div>
         </div>
       </div>
+       -->
+
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -93,7 +97,7 @@ export default {
     @size: 1800px;
     position: absolute;
     left: 50%;
-    bottom: 180px;
+    bottom: 80px;
     margin-left: -@size / 2;
     max-width: none !important;
     width: @size;
@@ -114,7 +118,6 @@ export default {
   }
   > .inner {
     position: relative;
-
     > .subjectList {
       @height: 28px;
       padding: 20px 30px;

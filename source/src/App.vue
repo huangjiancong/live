@@ -37,6 +37,7 @@ export default {
 
 
 <style lang="less">
+@import "./assets/less/common.less";
 @import "./assets/less/icomoon.less";
 @import "./assets/less/quick.less";
 * {
@@ -68,13 +69,15 @@ html {
 }
 
 body {
-  background-color: #f4f4f4;
+  background-color: #fff;
   // background-color: #fff;
   font-size: 20px;
+  color: @color4;
 }
 
 a {
   text-decoration: none;
+  color: @color4;
 }
 
 img,
@@ -84,6 +87,7 @@ input {
 
 img {
   pointer-events: none;
+  vertical-align: top;
 }
 
 input {

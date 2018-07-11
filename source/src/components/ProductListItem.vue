@@ -1,42 +1,20 @@
 <template>
-    <div :class="{ isPlay : option.item.isPlay }" class="J_ProductListItem">
-      <router-link :to="{ name: 'productDetails' , params: { courseId: option.item.courseId } }" class="inner">
-        <div class="teacher clearfix">
-          <div class="face">
-            <img src="@public/images/6.png" :alt="option.item.teacherName">
-          </div>
-          <div class="details">
-              <div class="teacherName">{{ option.item.teacherName }}</div>
-              <div class="orgName">{{ option.item.orgName }}</div>
-          </div>
+<div class="J_ProductListItem">
+    <router-link :to="{ name: 'productDetails' , params: { courseId: option.item.courseId } }" class="inner">
+        <div class="cover">
+            <img :src="option.item.cover" :alt="option.item.title">
         </div>
-        <div class="resources">
-          <img :src="option.item.cover" :alt="option.item.title">
-          <video ref="video" src="http://test.huifang.zycourse.com/recordings/z1.testzycourse.5b16256820a05d020c207134/698002972889579520.m3u8" preload="none" playsinline="true" x-webkit-airplay="true" webkit-playsinline="true" controls="true"></video>
-        </div>
-        <div class="details">
-          <div class="title">{{ option.item.title }}</div>
-          <div class="intro">{{ computedIntro }}</div>
-          <div class="labelList">
-            <div v-for="item in computedLabel" class="item">{{ item }}</div>
-          </div>
-          <div @click.prevent="play(option.item)" class="play">
-            <i class="icon icon-play"></i>
-            <div @click.stop.prevent="control(option.item)" class="control clearfix">
-              <div class="like">
-                <i class="icon icon-heart"></i>
-              </div>
-              <div @click.stop.prevent="pause(option.item)" class="pause">
-                <i class="icon icon-x"></i>
-              </div>
-              <div class="full">
-                <i class="icon icon-airplay"></i>
-              </div>
+        <div class="details clearfix">
+            <div class="title">{{ option.item.title }}</div>
+            <!-- <div class="intro">{{ computedIntro }}</div> -->
+            <div class="price" v-if="option.item.price == '0.00'"><b>免费</b></div>
+            <div class="price" v-else><span>￥</span><b>{{ option.item.price }}</b></div>
+            <div class="labelList">
+                <div v-for="item in computedLabel" class="item">{{ item }}</div>
             </div>
-          </div>
         </div>
-      </router-link>
-    </div>
+    </router-link>
+</div>
 </template>
 
 <script>
@@ -74,32 +52,9 @@ export default {
       return result;
     }
   },
-  methods: {
-    play(item) {
-      this.option.all.forEach(optionItem => {
-        if (optionItem.courseId == item.courseId) {
-          optionItem.isPlay = true;
-          optionItem.$video.play();
-        } else {
-          optionItem.$video.pause();
-          optionItem.isPlay = false;
-        }
-      });
-    },
-    control(item) {
-      return false;
-    },
-    pause(item) {
-      item.$video.pause();
-      item.isPlay = false;
-    }
-  },
-  created() {
-    this.$set(this.option.item, "isPlay", false);
-  },
-  mounted() {
-    this.$set(this.option.item, "$video", this.$refs.video);
-  }
+  methods: {},
+  created() {},
+  mounted() {}
 };
 </script>
 
@@ -108,159 +63,49 @@ export default {
 .J_ProductListItem {
   > .inner {
     display: block;
-    > .teacher {
-      padding: 20px;
-      > .face {
-        @size: 68px;
-        float: left;
-        width: @size;
-        height: @size;
-        background-color: #f4f4f4;
-        border-radius: 50%;
-        overflow: hidden;
-        > img {
-          width: @size;
-          height: @size;
-          vertical-align: top;
-        }
-      }
-      > .details {
-        float: left;
-        margin-left: 20px;
-        > .teacherName {
-          margin-top: 4px;
-          font-size: 24px;
-          color: @color2;
-        }
-        > .orgName {
-          margin-top: 2px;
-          color: @color4;
-        }
-      }
-    }
-    > .resources {
-      background-color: #000;
+    > .cover {
       > img {
-        display: inline-block;
         width: 100%;
-        height: 360px;
-        vertical-align: top;
-      }
-      > video {
-        display: none;
-        width: 100%;
-        height: 360px;
-        vertical-align: top;
+        height: 160px;
+        border-radius: @br;
       }
     }
     > .details {
-      position: relative;
-      padding: 20px;
-      height: 136px;
+      padding: 0 10px 10px 10px;
       > .title {
+        margin: 10px 0 6px;
+        width: 100%;
         .text-overflow();
-        width: 500px;
-        font-size: 26px;
+        font-size: 22px;
         color: @color2;
       }
       > .intro {
-        .text-row-overflow(2);
-        margin-top: 8px;
-        height: 56px;
-        line-height: 28px;
-        font-size: 18px;
-        color: @color4;
+      }
+      > .price {
+        float: left;
+        > span {
+          font-size: 16px;
+          color: #f60;
+        }
+        > b {
+          font-size: 22px;
+          color: #f60;
+        }
       }
       > .labelList {
-        margin-top: 10px;
+        float: right;
+        margin-top: 6px;
         > .item {
-          .linear-gradient();
           display: inline-block;
+          margin-left: 6px;
           padding: 0 10px;
-          margin-right: 14px;
-          border-radius: 3px;
-          font-size: 16px;
+          .linear-gradient();
+          border-radius: @br;
+          font-size: 14px;
           color: #fff;
-        }
-      }
-      > .play {
-        .linear-gradient();
-        transition: all 0.2s ease-out;
-        position: absolute;
-        right: 32px;
-        top: -46px;
-        width: 92px;
-        height: 92px;
-        background-color: @color1;
-        border-radius: 50%;
-        // box-shadow: 2px 2px 10px #ddd;
-        > .icon-play {
-          display: inline-block;
-          position: absolute;
-          left: 50%;
-          top: 50%;
-          margin-left: -20px;
-          margin-top: -20px;
-          font-size: 42px;
-          color: #fff;
-        }
-        > .control {
-          display: none;
-          padding: 70px 40px;
-          > .like {
-            float: left;
-            > i {
-              font-size: 36px;
-              color: #fff;
-            }
-          }
-          > .pause {
-            float: left;
-            margin-left: 210px;
-            margin-top: -18px;
-            > i {
-              font-size: 64px;
-              color: #fff;
-            }
-          }
-          > .full {
-            float: right;
-            > i {
-              font-size: 36px;
-              color: #fff;
-            }
-          }
-        }
-      }
-    }
-  }
-  &.isPlay {
-    > .inner {
-      > .resources {
-        > img {
-          display: none;
-        }
-        > video {
-          display: block;
-        }
-      }
-      > .details {
-        > .play {
-          right: 0;
-          top: 0;
-          width: 100%;
-          height: 100%;
-          border-radius: 0;
-          > .icon-play {
-            display: none;
-          }
-          > .control {
-            display: block;
-          }
         }
       }
     }
   }
 }
 </style>
-

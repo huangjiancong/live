@@ -2,7 +2,7 @@
     <div class="J_Search">
         <div :class="{ focus : focus }" class="input">
             <i class="icon"></i>
-            <input @focus="focus = true" @blur="focus = false" placeholder="KET通关必考语法强化班" type="text">
+            <input @focus="focus = true" @blur="focus = false" placeholder="复仇者联盟3：无限战争" type="text">
         </div>
         <div class="btnList">
             <div class="list clearfix">
