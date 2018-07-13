@@ -102,7 +102,7 @@ export default {
           .linear-gradient();
           border-radius: @br;
           font-size: 14px;
-          color: #fff;
+          color: @color9;
         }
       }
     }

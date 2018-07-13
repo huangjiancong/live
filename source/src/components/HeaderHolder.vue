@@ -133,7 +133,7 @@ export default {
           > a {
             display: block;
             position: relative;
-            color: @color5;
+            color: @color9;
             &::after {
               display: none;
               position: absolute;
@@ -143,7 +143,7 @@ export default {
               width: 72%;
               height: 3px;
               overflow: hidden;
-              background-color: #fff;
+              background-color: @color9;
               content: "";
             }
           }
@@ -152,7 +152,6 @@ export default {
           }
           &.current {
             > a {
-              color: rgba(255, 255, 255, 1);
               &::after {
                 display: block;
               }
@@ -164,13 +163,13 @@ export default {
         float: right;
         padding-left: 40px;
         height: @height;
-        border-left: 1px solid @color5;
+        border-left: 1px solid @color9;
         > a {
           > .icon {
             position: relative;
             top: -2px;
             font-size: 32px;
-            color: @color5;
+            color: @color9;
           }
         }
       }
