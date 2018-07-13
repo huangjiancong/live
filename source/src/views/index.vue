@@ -38,7 +38,7 @@ export default {
       resolve(store.dispatch("index_set_newCourse"));
     });
 
-    return Promise.all([gradeAndSubject, newCourse, banner]);
+    return Promise.all([gradeAndSubject, banner, newCourse]);
   },
   components: {
     Caption,

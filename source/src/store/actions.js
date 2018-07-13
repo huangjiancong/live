@@ -1,8 +1,4 @@
-import axios from 'axios';
-
-// axios.defaults.baseURL = 'http://172.21.17.137:8080'
-axios.defaults.baseURL = 'http://nodejs-dev1.default.10.2.2.130.xip.io'
-
+import $ajax from '../util/ajax';
 
 export default {
     window_set_width({ commit }, option) {
@@ -23,7 +19,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/base/gradeAndSubject', {}).then((res) => {
+            $ajax.get('/api/base/gradeAndSubject', {}).then((res) => {
                 var { data } = res.data;
                 resolve(commit('INDEX_SET_GRADEANDSUBJECT', data))
             })
@@ -35,7 +31,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/hotCourse', { params: { size: 8 } }).then((res) => {
+            $ajax.get('/api/hotCourse', { size: 8 }).then((res) => {
                 var { data } = res.data;
 
                 var imgs = [
@@ -64,7 +60,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/hotCourse', { params: { size: 12 } }).then((res) => {
+            $ajax.get('/api/hotCourse', { size: 12 }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('INDEX_SET_HOTCOURSE', data))
             })
@@ -76,7 +72,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/newCourse', { params: { size: 12 } }).then((res) => {
+            $ajax.get('/api/newCourse', { size: 12 }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('INDEX_SET_NEWCOURSE', data))
             })
@@ -88,7 +84,8 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/base/gradeAndSubject', {}).then((res) => {
+            $ajax.get('/api/base/gradeAndSubject', {}).then((res) => {
+                console.log(data);
                 var { data } = res.data;
                 resolve(commit('COURSEFILTERLIST_SET_GRADEANDSUBJECT', data))
             })
@@ -100,7 +97,7 @@ export default {
 
         return new Promise((resolve, reject) => {
             // http://api.zycourse.com/h5api/queryCourse?grade=&orgId=&subject=&pageNo=1&pageSize=10&over=false
-            axios.get('/api/queryCourse', {
+            $ajax.get('/api/queryCourse', {
                 params: {
                     orgId: '',
                     grade,
@@ -118,7 +115,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/api/courseDetail', { params: { courseId: courseId } }).then((res) => {
+            $ajax.get('/api/courseDetail', { courseId: courseId }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('PRODUCTDETAILS_SET_DETAILS', data))
             })
@@ -130,7 +127,7 @@ export default {
 
         return new Promise((resolve, reject) => {
 
-            axios.get('/filesMerge', { params: { files: '8.png,9.png' } }).then((res) => {
+            $ajax.get('/filesMerge', { files: '8.png,9.png' }).then((res) => {
                 var { data } = res.data;
 
                 commit('ABOUT_SET_RESOURCESIMG', data[1])
