@@ -89,7 +89,6 @@ app.use('/filesMerge', (req, res) => {
 app.use(compression({ threshold: 0 }))
 app.use('/dist', serve('./dist', true))
 app.use('/public', serve('./public', true))
-app.use('/guide', serve('./guide', true))
 
 app.use(microcache.cacheSeconds(1, req => useMicroCache && req.originalUrl))
 

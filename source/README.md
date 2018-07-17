@@ -4,8 +4,6 @@
 单页应用（Single Page Application，SPA） + 
 多文件合并（Multi File Merger，MFM）
 
-![Image text](https://github.com/huangjiancong/live/blob/master/source/guide/static/images/3.png)
-
 
 # install dependencies
 npm install # or yarn
