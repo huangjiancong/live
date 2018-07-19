@@ -98,12 +98,10 @@ export default {
         return new Promise((resolve, reject) => {
             // http://api.zycourse.com/h5api/queryCourse?grade=&orgId=&subject=&pageNo=1&pageSize=10&over=false
             $ajax.get('/api/queryCourse', {
-                params: {
-                    orgId: '',
-                    grade,
-                    subject,
-                    pageSize: 10
-                }
+                orgId: '',
+                grade,
+                subject,
+                pageSize: 10
             }).then((res) => {
                 var { data } = res.data;
                 resolve(commit('COURSEFILTERLIST_SET_COURSELIST', data.list))
